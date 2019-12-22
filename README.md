@@ -43,6 +43,12 @@ Visit the address printed on the Browser
 * Visit $INGRESS_HOST:31001 on the browser to access Jaeger
 * Visit $INGRESS_HOST:31002 on the browser to access Grafana
 
+## Circuit break test
+Running the command below you will see 3 request failed 
+then the circuit will  open to the sick pod and no errors will appear anymore
+
+`while true; do curl $GATEWAY/api/vehicles/driver/City%20Truck; echo; done;`
+
 ### Cleanup
 
 * Delete the cluster
