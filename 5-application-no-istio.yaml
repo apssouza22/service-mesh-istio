@@ -165,6 +165,55 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: staff-service-photo-call
+spec:
+  selector:
+    matchLabels:
+      app: staff-service
+  replicas: 1
+  template: # template for the pods
+    metadata:
+      labels:
+        app: staff-service
+        version: safe
+    spec:
+      containers:
+      - name: staff-service
+        image: richardchesterwood/istio-fleetman-staff-service:5
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production-microservice
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: photo-service
+spec:
+  selector:
+    matchLabels:
+      app: photo-service
+  replicas: 1
+  template: # template for the pods
+    metadata:
+      labels:
+        app: photo-service
+    spec:
+      containers:
+        - name: photo-service
+          image: richardchesterwood/istio-fleetman-photo-service:5
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production-microservice
+          imagePullPolicy: Always
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: staff-service-risky-version
 spec:
   selector:
@@ -187,6 +236,7 @@ spec:
           ports:
             - containerPort: 8080
 ---
+### Services ###
 apiVersion: v1
 kind: Service
 metadata:
@@ -218,6 +268,7 @@ spec:
       port: 8080
   type: ClusterIP
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -230,6 +281,7 @@ spec:
       port: 8080
   type: ClusterIP
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -242,6 +294,7 @@ spec:
       port: 8080
   type: ClusterIP
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -249,6 +302,20 @@ metadata:
 spec:
   selector:
     app: staff-service
+  ports:
+    - name: http
+      port: 8080
+  type: ClusterIP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-photo-service
+spec:
+  selector:
+    app: photo-service
   ports:
     - name: http
       port: 8080

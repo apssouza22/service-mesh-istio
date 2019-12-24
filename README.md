@@ -20,10 +20,7 @@ This repository tries to provide a bootstrap example of a service mesh using Ist
 # How to use
 * `minikube start --memory 4096` If you have more memory I sugest increase the memory
 * `kubectl create ns istio-system`
-* `kubectl apply -f 1-istio-init.yaml`
-* `kubectl apply -f 2-istio-minikube-reduced.yaml`
-* `kubectl apply -f 3-kiali-secret.yaml`
-* `kubectl apply -f 4-label-default-namespace.yaml`
+* `kubectl apply -f ./infra/`
 * Wait until all pods are up and running, you can watch it with `kubectl get po -n istio-system -w`
 * `kubectl apply -f 5-application-no-istio.yaml`
 * `kubectl apply -f 6-istio-gateway-rules.yaml`
