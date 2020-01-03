@@ -8,6 +8,8 @@ spec:
   - mtls: {}
 
 ---
+
+# Configure Istio services to send mutual TLS traffic by setting DestinationRule
 apiVersion: "networking.istio.io/v1alpha3"
 kind: "DestinationRule"
 metadata:
