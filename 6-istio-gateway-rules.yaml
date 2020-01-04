@@ -28,11 +28,11 @@ spec:
         - destination:
             host: fleetman-webapp
             subset: original
-          weight: 50
+          weight: 50 # 50% of the traffic goes to  the original version
         - destination:
             host: fleetman-webapp
             subset: experimental
-          weight: 50
+          weight: 50 # 50% of the traffic goes to  the experimental version
 
 ---
 kind: DestinationRule
@@ -49,55 +49,3 @@ spec:
     - labels:
         version: experimental #pointing to deployment with label version=experimental
       name: experimental
-
----
-## external service entry
-apiVersion: networking.istio.io/v1alpha3
-kind: ServiceEntry
-metadata:
-  name: fleetman-driver-monitoring
-spec:
-  hosts:
-    - 2oujlno5e4.execute-api.us-east-1.amazonaws.com
-  location: MESH_EXTERNAL
-  ports:
-    - number: 80
-      name: http-port
-      protocol: HTTP
-    - number: 443
-      name: https-port-for-tls-origination
-      protocol: HTTPS
-  resolution: DNS
----
-
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: fleetman-driver-monitoring
-spec:
-  hosts:
-    - 2oujlno5e4.execute-api.us-east-1.amazonaws.com
-  http:
-    - match:
-        - port: 80
-      route:
-        - destination:
-            host: 2oujlno5e4.execute-api.us-east-1.amazonaws.com
-            port:
-              number: 443
----
-
-apiVersion: networking.istio.io/v1alpha3
-kind: DestinationRule
-metadata:
-  name: fleetman-driver-monitoring
-spec:
-  host: 2oujlno5e4.execute-api.us-east-1.amazonaws.com
-  trafficPolicy:
-    loadBalancer:
-      simple: ROUND_ROBIN
-    portLevelSettings:
-      - port:
-          number: 443
-        tls:
-          mode: SIMPLE

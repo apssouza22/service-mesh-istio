@@ -11,7 +11,7 @@ This repository tries to provide a bootstrap example of a service mesh using Ist
 - TLS connection
 - Service discovery
 - Traffic management 
-- External call management
+- External call monitoring
  
 #### Telemetry 
 - Grafana
@@ -50,5 +50,6 @@ then the circuit will  open to the sick pod and no errors will appear anymore
 ### Cleanup
 
 * Delete the cluster
-``minikube delete``
+``kubectl delete -f ./``
+``kubectl delete -f ./istio``
 
