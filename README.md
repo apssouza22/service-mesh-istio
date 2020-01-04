@@ -2,6 +2,7 @@
 
 This repository tries to provide a bootstrap example of a service mesh using Istio
 
+![Alt text](mesh-arch.png?raw=true "microservices architecture")
 
 ### Enabled services:
 #### Features
@@ -10,6 +11,7 @@ This repository tries to provide a bootstrap example of a service mesh using Ist
 - TLS connection
 - Service discovery
 - Traffic management 
+- External call management
  
 #### Telemetry 
 - Grafana
