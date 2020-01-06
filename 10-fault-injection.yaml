@@ -1,0 +1,44 @@
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: fleetman-vehicle-telemetry
+  namespace: default
+spec:
+  hosts:
+    - fleetman-vehicle-telemetry
+  http:
+    - fault:
+        abort:
+          httpStatus: 503
+          percentage:
+            value: 60
+      route:
+        - destination:
+            host: fleetman-vehicle-telemetry
+
+---
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: fleetman-staff-service
+  namespace: default
+spec:
+  hosts:
+    - fleetman-staff-service
+  http:
+    - match:
+        - headers:
+            x-my-header:
+              exact: dark-test
+      fault:
+        delay:
+          percentage:
+            value: 100.0
+          fixedDelay: 10s
+      route:
+        - destination:
+            host: fleetman-staff-service
+
+    - route: # Catch if there is no match
+        - destination:
+            host: fleetman-staff-service
