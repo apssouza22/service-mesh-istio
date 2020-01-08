@@ -320,3 +320,78 @@ spec:
     - name: http
       port: 8080
   type: ClusterIP
+
+
+
+### GRPC ###
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greeter-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: greeter-server
+  template:
+    metadata:
+      labels:
+        app: greeter-server
+    spec:
+      containers:
+        - name: greeter-server
+          image: apssouza/grpc-greeter:server
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 50051
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: greeter-server
+spec:
+  ports:
+    - name: grpc
+      port: 50051
+      protocol: TCP
+  selector:
+    app: greeter-server
+  type: ClusterIP
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greeter-client
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: greeter-client
+  template:
+    metadata:
+      labels:
+        app: greeter-client
+    spec:
+      containers:
+        - name: greeter-client
+          image: apssouza/grpc-greeter:client
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 50051
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: greeter-client
+spec:
+  ports:
+    - name: grpc
+      port: 50051
+      protocol: TCP
+  selector:
+    app: greeter-client
+  type: ClusterIP
+---
