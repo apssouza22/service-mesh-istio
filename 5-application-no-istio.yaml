@@ -366,7 +366,7 @@ kind: Deployment
 metadata:
   name: greeter-client
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: greeter-client

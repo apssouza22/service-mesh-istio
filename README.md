@@ -13,7 +13,8 @@ This repository tries to provide a bootstrap example of a service mesh using Ist
 - Traffic management 
 - External call monitoring
 - GRPC loadbalance
- 
+- Custom logging 
+
 #### Telemetry 
 - Grafana
 - Kiali

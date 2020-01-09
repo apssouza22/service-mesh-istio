@@ -53,7 +53,7 @@ metadata:
 spec:
   host: 2oujlno5e4.execute-api.us-east-1.amazonaws.com
   trafficPolicy:
-    portLevelSettings:
+    portLevelSettings: # Traffic policy to specific port
       - port:
           number: 443
         tls:

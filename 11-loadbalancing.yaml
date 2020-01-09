@@ -6,6 +6,6 @@ spec:
   host: greeter-server
   trafficPolicy:
     loadBalancer:
-      simple: ROUND_ROBIN
+      simple: LEAST_CONN
     tls:
       mode: ISTIO_MUTUAL
