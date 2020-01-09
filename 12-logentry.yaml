@@ -9,7 +9,7 @@ spec:
   params:
     severity: '"info"'
     timestamp: request.time
-    variables:
+    variables: # Getting values from Envoy attributes https://istio.io/docs/reference/config/policy-and-telemetry/attribute-vocabulary/
       source: source.labels["app"] | source.workload.name | "unknown"
       user: source.user | "unknown"
       destination: destination.labels["app"] | destination.workload.name | "unknown"
@@ -40,7 +40,7 @@ metadata:
   name: newlogstdio
   namespace: istio-system
 spec:
-  match: destination.service.host == "greeter-server.default.svc.cluster.local"
+  match: destination.service.host == "greeter-server.default.svc.cluster.local" #logging only greeter-server
   actions:
     - handler: newloghandler
       instances:
