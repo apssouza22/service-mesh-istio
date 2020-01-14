@@ -1,0 +1,15 @@
+apiVersion: "authentication.istio.io/v1alpha1"
+kind: "Policy"
+metadata:
+  name: "jwt-example"
+spec:
+  peers:
+    - mtls:
+        mode: null
+  targets:
+    - name: fleetman-webapp
+  origins:
+    - jwt:
+        issuer: "testing@secure.istio.io"
+        jwksUri: "https://raw.githubusercontent.com/istio/istio/release-1.4/security/tools/jwt/samples/jwks.json"
+  principalBinding: USE_ORIGIN

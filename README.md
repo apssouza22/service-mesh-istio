@@ -6,14 +6,15 @@ This repository tries to provide a bootstrap example of a service mesh using Ist
 
 ### Enabled services:
 #### Features
-- Load balance
-- Circuit beak
+- Load balancing
+- Circuit breaker
 - TLS connection
 - Service discovery
 - Traffic management 
 - External call monitoring
-- GRPC loadbalance
+- GRPC load balancing
 - Custom logging 
+- Authentication
 
 #### Telemetry 
 - Grafana
