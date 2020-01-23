@@ -15,6 +15,9 @@ This repository tries to provide a bootstrap example of a service mesh using Ist
 - GRPC load balancing
 - Custom logging 
 - Authentication
+- Fault injection
+- Traceability 
+- Observability 
 
 #### Telemetry 
 - Grafana

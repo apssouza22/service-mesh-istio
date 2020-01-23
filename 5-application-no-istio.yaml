@@ -251,6 +251,7 @@ spec:
     - name: http
       port: 80
   type: ClusterIP
+  #NodePort
 ---
 apiVersion: v1
 kind: Service
