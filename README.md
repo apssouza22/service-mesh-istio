@@ -40,7 +40,6 @@ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -
 export GATEWAY=$INGRESS_HOST:$INGRESS_PORT
 echo $GATEWAY
 ```
-istio-system   istio-ingressgateway                    LoadBalancer   10.101.108.108   <pending>     15020:30158/TCP,80:31380/TCP,443:31390/TCP,31400:31400/TCP,15029:31143/TCP,15030:31580/TCP,15031:31000/TCP,15032:32613/TCP,15443:31577/TCP   3m46s
 
 Visit the address printed on the Browser
  
