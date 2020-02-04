@@ -343,7 +343,7 @@ spec:
     spec:
       containers:
         - name: greeter-server
-          image: apssouza/grpc-greeter:server
+          image: apssouza/grpc-greeter:server-reqid
           imagePullPolicy: Always
           ports:
             - containerPort: 50051
@@ -378,7 +378,7 @@ spec:
     spec:
       containers:
         - name: greeter-client
-          image: apssouza/grpc-greeter:client
+          image: apssouza/grpc-greeter:client-reqid
           imagePullPolicy: Always
           ports:
             - containerPort: 50051

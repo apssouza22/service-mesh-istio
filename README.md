@@ -26,8 +26,9 @@ This repository tries to provide a bootstrap example of a service mesh using Ist
 
 
 # How to use
-* `minikube start --memory 4096` If you have more memory I sugest increase the memory
-* `kubectl apply -f ./istio/`
+* Install Minikube  https://kubernetes.io/docs/tasks/tools/install-minikube/
+* `minikube start --memory 4096` If you have more memory I suggest increasing the memory
+* `kubectl apply -f ./istio/` Some components depends on the Istio init, so I recommend you keep running this command until all warnings go away
 * Wait until all pods are up and running, you can watch it with `kubectl get po -n istio-system -w`
 * `kubectl apply -f ./`
 
@@ -39,6 +40,8 @@ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -
 export GATEWAY=$INGRESS_HOST:$INGRESS_PORT
 echo $GATEWAY
 ```
+istio-system   istio-ingressgateway                    LoadBalancer   10.101.108.108   <pending>     15020:30158/TCP,80:31380/TCP,443:31390/TCP,31400:31400/TCP,15029:31143/TCP,15030:31580/TCP,15031:31000/TCP,15032:32613/TCP,15443:31577/TCP   3m46s
+
 Visit the address printed on the Browser
  
 ## Monitoring

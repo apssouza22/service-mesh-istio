@@ -13,7 +13,7 @@ spec:
           percentage:
             value: 60
       route:
-        - destination:
+        - destination: # vehicle speed will start fail
             host: fleetman-vehicle-telemetry
 
 ---
