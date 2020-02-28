@@ -80,4 +80,6 @@ Add to your request the Authorization with the token below
 * Delete the cluster
 ``kubectl delete -f ./``
 ``kubectl delete -f ./istio``
+
+## That's all. Leave a star if it helped you!
  
