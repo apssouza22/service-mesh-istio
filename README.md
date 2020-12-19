@@ -2,7 +2,7 @@
 
 This repository tries to provide a bootstrap example of a service mesh using Istio
 
-We have recorded some screencast presenting this project. [Check it out!](https://medium.com/@alexsandrosouza/programming-microservices-communication-with-istio-screencast-b78cce9211df)
+We have recorded some screencast presenting this project. [Check it out!](https://dzone.com/articles/programming-microservices-communication-with-istio-state)
 
 ![Alt text](mesh-arch.png?raw=true "microservices architecture")
 
