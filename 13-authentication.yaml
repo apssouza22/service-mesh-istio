@@ -13,3 +13,15 @@ spec:
         issuer: "testing@secure.istio.io"
         jwksUri: "https://raw.githubusercontent.com/istio/istio/release-1.4/security/tools/jwt/samples/jwks.json"
   principalBinding: USE_ORIGIN
+
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: jwt-example
+spec:
+  selector:
+    matchLabels:
+      app: fleetman-webapp
+  jwtRules:
+    - issuer: "testing@secure.istio.io"
+      jwksUri: "https://raw.githubusercontent.com/istio/istio/release-1.4/security/tools/jwt/samples/jwks.json"
