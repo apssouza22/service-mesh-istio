@@ -1,5 +1,13 @@
 # This is the application config, no Istio related config. You can replace this with you app Sk8 config
 
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: position-simulator
+  labels:
+    account: position-simulator
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,6 +22,7 @@ spec:
       labels:
         app: position-simulator
     spec:
+      serviceAccountName: position-simulator
       containers:
       - name: position-simulator
         image: richardchesterwood/istio-fleetman-position-simulator:6
@@ -22,6 +31,9 @@ spec:
           value: production-microservice
         command: ["java","-Xmx50m","-jar","webapp.jar"]
         imagePullPolicy: Always
+
+
+
 ---
 apiVersion: apps/v1
 kind: Deployment
