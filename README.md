@@ -29,20 +29,14 @@ We have recorded some screencast presenting this project. [Check it out!](https:
 <a href="https://www.buymeacoffee.com/apssouza"><img src="https://miro.medium.com/max/654/1*rQv8JgstmK0juxP-Kb4IGg.jpeg"></a>
 
 ---
-## Free Advanced Java Course
-I am the author of the [Advanced Java for adults course](https://www.udemy.com/course/advanced-java-for-adults/?referralCode=8014CCF0A5A931ADED5F). This course contains advanced and not conventional lessons. In this course, you will learn to think differently from those who have a limited view of software development. I will provoke you to reflect on decisions that you take in your day to day job, which might not be the best ones. This course is for middle to senior developers and we will not teach Java language features but how to lead complex Java projects. 
 
-This course's lectures are based on a Trading system, an opensource project hosted on my [Github](https://github.com/apssouza22/trading-system).
-
----
 
 
 
 # How to use
-* Install Minikube  https://kubernetes.io/docs/tasks/tools/install-minikube/
-* `minikube start --memory 4096` If you have more memory I suggest increasing the memory
-* `kubectl apply -f ./istio/` Some components depends on the Istio init, so I recommend you keep running this command until all warnings go away
-* Wait until all pods are up and running, you can watch it with `kubectl get po -n istio-system -w`
+* [Install Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) 
+* [Install istio](https://istio.io/v1.4/docs/setup/getting-started/) 
+* [Setup Istio with MiniKube](https://istio.io/v1.4/docs/setup/platform-setup/minikube/)
 * `kubectl apply -f ./`
 
 
@@ -58,9 +52,9 @@ Visit the address printed on the Browser
  
 ## Monitoring
 
-* Visit $INGRESS_HOST:31000 on the browser to access Kiali. credential admin - admin
-* Visit $INGRESS_HOST:31001 on the browser to access Jaeger
-* Visit $INGRESS_HOST:31002 on the browser to access Grafana
+* istioctl dashboard kiali
+* istioctl dashboard grafana
+* istioctl dashboard jaeger
 
 ## Checking Circuit break
 Running the command below you will see 3 request failed 
@@ -90,7 +84,6 @@ Add to your request the Authorization with the token below
 
 * Delete the cluster
 ``kubectl delete -f ./``
-``kubectl delete -f ./istio``
 
 ## That's all. Leave a star if it helped you!
  
