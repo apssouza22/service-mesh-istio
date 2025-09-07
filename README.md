@@ -1,6 +1,5 @@
 # Service mesh example
-
-This repository tries to provide a bootstrap example of a service mesh using Istio
+Examples of a dedicated infrastructure layer using Istio that manages communication between microservices within an application, providing capabilities like traffic management, security, and observability without altering the application's code. It abstracts networking complexities into a network of transparent, proxy-based sidecars alongside each service.
 
 We have recorded some screencast presenting this project. [Check it out!](https://dzone.com/articles/programming-microservices-communication-with-istio-state)
 
